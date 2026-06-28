@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Tutorial interativo para montar um computador PC, passo a passo com drag-and-drop." />
+<title>Tutorial: Montar PC</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  // Redireciona para start.html se não veio do menu inicial
+  if (!document.referrer.includes('start.html')) {
+    window.location.href = 'start.html';
+  }
+</script>
+</head>
+<body>
+<header>
+  <h1>Tutorial: Montar PC</h1>
+  <div style="margin-left:auto;color:var(--muted);font-size:13px">Arrasta a peça correta para o local indicado.</div>
+</header>
+
+<main class="wrap">
+  <!-- left: caixa de texto -->
+  <aside class="panel" role="complementary">
+    <h3>Informações / Notas</h3>
+    <div class="text-box" id="leftBox" contenteditable="false" aria-live="polite"></div>
+  </aside>
+
+  <section class="stage" aria-label="Área de montagem do PC">
+    <div class="board-wrap" id="caseVisual" aria-label="Área da caixa">
+      <div class="mobo" id="mobo" aria-label="Placa-mãe">
+      <!-- motherboard image as element (keeps coordinate system consistent) -->
+      <img class="mobo-img" src="Imagens/Mobo.png" alt="Imagem da placa-mãe AMD AM4">
+      <!-- CPU socket -->
+      <div class="target t-cpu" id="t-cpu" data-accept="cpu" aria-label="Área de drop para CPU">CPU</div>
+      <!-- RAM slots -->
+      <div class="target t-ram" id="t-ram-1" data-accept="ram" aria-label="Área de drop para RAM">RAM</div>
+      <!-- PCIe area -->
+      <div class="target t-gpu" id="t-gpu" data-accept="gpu" aria-label="Área de drop para GPU">GPU</div>
+      <!-- storage area -->
+      <div class="target t-storage" id="t-storage" data-accept="storage" aria-label="Área de drop para armazenamento">STORAGE</div>
+      <!-- PSU target -->
+      <div class="target t-psu" id="t-psu" data-accept="psu" aria-label="Área de drop para fonte PSU">PSU</div>
+    </div>
+  </section>
+
+  <!-- right: peças -->
+  <aside class="panel" role="complementary">
+    <h3>Peças</h3>
+    <div class="components-list" id="components" role="list">
+      <div class="comp" draggable="true" data-type="motherboard" id="item-mobo" role="listitem" tabindex="0">
+        <img src="Imagens/Mobo.png" alt="Imagem da placa-mãe">
+        <div><strong>Placa-mãe</strong><div style="color:var(--muted);font-size:13px">Arrasta para dentro da caixa</div></div>
+      </div>
+      <div class="comp" draggable="true" data-type="cpu" id="item-cpu" style="display:none" role="listitem" tabindex="0">
+        <img src="Imagens/CPU.png" alt="Imagem do processador CPU">
+        <div><strong>CPU</strong><div style="color:var(--muted);font-size:13px">Encaixa no socket</div></div>
+      </div>
+      <div class="comp" draggable="true" data-type="ram" id="item-ram" style="display:none" role="listitem" tabindex="0">
+        <img src="Imagens/RAM.jpeg" alt="Imagem do módulo de memória RAM">
+        <div><strong>Memória RAM</strong><div style="color:var(--muted);font-size:13px">Coloca nos slots (lado a lado)</div></div>
+      </div>
+      <div class="comp" draggable="true" data-type="storage" id="item-storage" style="display:none" role="listitem" tabindex="0">
+        <img src="Imagens/SSD.png" alt="Imagem do SSD de armazenamento">
+        <div><strong>SSD / HDD</strong><div style="color:var(--muted);font-size:13px">Baias / M.2</div></div>
+      </div>
+      <div class="comp" draggable="true" data-type="gpu" id="item-gpu" style="display:none" role="listitem" tabindex="0">
+        <img src="Imagens/GPU.png" alt="Imagem da placa gráfica GPU">
+        <div><strong>GPU</strong><div style="color:var(--muted);font-size:13px">Slot PCIe</div></div>
+      </div>
+      <div class="comp" draggable="true" data-type="psu" id="item-psu" style="display:none" role="listitem" tabindex="0">
+        <img src="Imagens/PSU.png" alt="Imagem da fonte de alimentação PSU">
+        <div><strong>Fonte (PSU)</strong><div style="color:var(--muted);font-size:13px">Dentro da caixa</div></div>
+      </div>
+    </div>
+    <div class="summary" id="summary">
+      <h4>Resumo</h4>
+      <div id="buildList"></div>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button class="btn" id="resetBtn" aria-label="Reiniciar tutorial">Reset</button>
+        <a href="start.html" class="btn" style="text-align:center;text-decoration:none" aria-label="Voltar ao menu inicial">Menu</a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<!-- Modal de conclusão -->
+<div id="completionModal" class="completion-modal" style="display:none" role="dialog" aria-labelledby="completionTitle" aria-describedby="completionText">
+  <div class="completion-content">
+    <h2 id="completionTitle">Montagem Completa!</h2>
+    <p id="completionText" class="completion-text">Parabéns! Concluiste com sucesso a montagem do computador.</p>
+    
+    <a href="https://youtu.be/JB2ZmsFyTzM" target="_blank" class="completion-btn-large" aria-label="Ver vídeo tutorial no YouTube">
+      <span>▶️ Ver Vídeo Tutorial</span>
+    </a>
+    
+    <a href="start.html" class="completion-btn-small" aria-label="Voltar ao menu inicial">Voltar ao Menu</a>
+    
+    <p class="completion-subtitle">Escolhe uma das opções acima para continuar!</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+

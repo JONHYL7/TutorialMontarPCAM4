@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Página inicial do tutorial interativo para montar um computador PC." />
+  <title>Página Inicial - Tutorial de PC</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Redireciona para start.html se abrir index.html diretamente
+    if (window.location.href.includes('index.html')) {
+      window.location.href = 'start.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="menu-container">
+    <div class="menu-title">
+      <h1>🖥️ Tutorial de Montagem de Computador</h1>
+      <p>Escolha uma opção para começar</p>
+    </div>
+
+    <div class="menu-buttons">
+      <a href="index.html" class="menu-btn">
+        <span class="menu-btn-icon">🖥️</span>
+        <span>Montar Computador (AM4)</span>
+      </a>
+      <a href="https://youtu.be/JB2ZmsFyTzM" target="_blank" class="menu-btn">
+        <span class="menu-btn-icon">▶️</span>
+        <span>Ver Vídeo Tutorial</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
